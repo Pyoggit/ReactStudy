@@ -1,16 +1,29 @@
 import './App.css'
-import Header from './components/Header'
-import Main from './components/Main'
-import Footer from './components/Footer'
-
+import { useState } from 'react'
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [light, setLight] = useState('OFF');
+
+  const buttonClickEvent = (e)=>{
+    setCount(count + 1)
+    console.log(count)
+  }
+
+  
 
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <div>
+        <h1>{count}</h1>
+        <button onClick ={buttonClickEvent}>+</button>
+      </div>
+      <div>
+        <h1>{light}</h1>
+        <button onClick = {()=>{ setLight(light === 'OFF' ? 'ON' : 'OFF' ) }}>
+          {light === 'ON' ? ("끄기"):("켜기")}
+        </button>
+      </div>
     </>
   )
 }
