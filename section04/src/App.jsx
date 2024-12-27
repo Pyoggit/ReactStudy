@@ -1,31 +1,55 @@
-import './App.css'
-import { useState } from 'react'
+import "./App.css";
+import { useState } from "react";
+
+function Buld() {
+  const [light, setLight] = useState("OFF");
+  console.log(`Bulb ${light}`);
+  return (
+    <>
+      {light === "ON" ? (
+        <h1 style={{ backgroundColor: "orange" }}>ON</h1>
+      ) : (
+        <h1 style={{ backgroundColor: "gray" }}>OFF</h1>
+      )}
+      <button
+        onClick={() => {
+          setLight(light === "ON" ? "OFF" : "ON");
+        }}
+      >
+        {light === "ON" ? "끄기" : "켜기"}
+      </button>
+    </>
+  );
+}
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  console.log(`Counter ${count}`);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
+    </div>
+  );
+};
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [light, setLight] = useState('OFF');
-
-  const buttonClickEvent = (e)=>{
-    setCount(count + 1)
-    console.log(count)
-  }
-
-  
-
+  console.log("App");
   return (
     <>
       <div>
-        <h1>{count}</h1>
-        <button onClick ={buttonClickEvent}>+</button>
-      </div>
-      <div>
-        <h1>{light}</h1>
-        <button onClick = {()=>{ setLight(light === 'OFF' ? 'ON' : 'OFF' ) }}>
-          {light === 'ON' ? ("끄기"):("켜기")}
-        </button>
+        <Buld />
+        <Counter />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
