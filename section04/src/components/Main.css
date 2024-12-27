@@ -1,0 +1,10 @@
+div.logout{
+    background-color: rgb(234, 34, 34);
+    border: 1px solid black;
+    padding: 10px;
+}
+div.login{
+    background-color: #ccc;
+    border: 1px solid black;
+    padding: 10px;
+}
