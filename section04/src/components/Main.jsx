@@ -3,13 +3,18 @@ import "./Main.css"
 function Main(){
 
     const number = 9;
-    const obj = {name: "jp", age: 27, isLogin: false};
+    const obj = {name: "jp", age: 27, isLogin: true};
 
-    if(obj.isLogin === true){
-        return(<div className="logout">{obj.name} 로그아웃</div>);
-    }else{
-        return(<div className="login">{obj.name} 로그인</div>);       
-    }
+    return(
+        <>
+            {obj.isLogin === false?
+                (<div className="logout">로그아웃</div>):
+                (<div className="login">로그인</div>)    
+        
+        }
+        
+        </>
+    );
   };
 
   export default Main;
