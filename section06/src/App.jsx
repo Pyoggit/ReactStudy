@@ -1,47 +1,45 @@
 import "./App.css";
-import { useState, useEffect } from "react";
 import Viewer from "./components/Viewer";
-import Controller from "./components/Controller";
+import Controller from "./components/controller";
 import Even from "./components/Even";
+import { useState, useEffect, useRef } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [input, setInput] = useState("");
-  //마운트 될때, 카운트 값이 변경이 될 때
-  useEffect(
-    () => {
-      console.log(`(Mount, Update)count: ${count}`);
-    },
-    [count],
-    [input]
-  );
-
+  const [input, setInput] = useState("a");
+  const isMount = useRef(false);
+  //마운될때, 모든 스테이트가 바뀔때 업데이트
+  useEffect(() => {
+    if (isMount.current === false) {
+      isMount.current = true;
+      console.log(`(Mount)count:`);
+      return;
+    } else {
+      console.log(`(Update)count: `);
+    }
+  });
   const onClickButton = (value) => {
     setCount(count + value);
   };
-
-  //input 변화된 값
+  //input 변화된값 stting
   const onChangeInput = (e) => {
     setInput(e.target.value);
   };
 
   return (
-    <>
-      <div className="app">
-        <h1>Simple counter</h1>
-        <div>
-          <input type="text" value={input} onChange={onChangeInput} />
-        </div>
-        <section className="viewer">
-          <Viewer count={count} />
-          {count % 2 === 0 ? <Even /> : null}
-        </section>
-
-        <section className="controller">
-          <Controller onClickButton={onClickButton} />
-        </section>
-      </div>
-    </>
+    <div className="app">
+      <h1>Simple Counter</h1>
+      <section>
+        <input type="text" value={input} onChange={onChangeInput} />
+      </section>
+      <section className="viewer">
+        <Viewer count={count} />
+        {count % 2 === 0 ? <Even /> : null}
+      </section>
+      <section className="controller">
+        <Controller onClickButton={onClickButton} />
+      </section>
+    </div>
   );
 }
 
