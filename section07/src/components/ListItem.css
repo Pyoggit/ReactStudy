@@ -1,29 +1,59 @@
+/* 전체 항목 컨테이너 */
 .listItem {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* 가로 정렬 */
     align-items: center;
-    gap: 20px;
-    padding: 10px 0px 20px 0px;
+    gap: 10px;
+    padding: 10px 0;
     border-bottom: 1px solid rgb(215, 213, 213);
-}
-.listItem > input {
-    width: 25px;
-}
-
-.listItem > p.content {
-    flex: 1;
-}
-
-.listItem > p.date {
-    color: rgb(160, 158, 158);
-    font-size: 15px;
-}
-
-.listItem > button {
-    color: gray;
+  }
+  
+  /* 체크박스 왼쪽 정렬 */
+  .listItem > input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  /* 글 내용 가운데 정렬 */
+  .content-wrapper {
+    flex: 1; /* 남은 공간을 채움 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수평 가운데 정렬 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    gap: 5px;
+  }
+  
+  /* 텍스트 스타일 */
+  .content-wrapper > p {
+    margin: 0;
     font-size: 14px;
+  }
+  
+  /* 날짜 스타일 */
+  .content-wrapper > .date {
+    color: rgb(160, 158, 158);
+    font-size: 12px;
+  }
+  
+  /* 버튼 오른쪽 정렬 */
+  .button-wrapper {
+    display: flex;
+    flex-direction: row; /* 버튼을 가로로 배치 */
+    gap: 10px;
+  }
+  
+  /* 버튼 스타일 */
+  .button-wrapper > button {
+    color: gray;
+    font-size: 12px;
     border: none;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-}
+    background-color: rgb(240, 240, 240);
+  }
+  
+  .button-wrapper > button:hover {
+    background-color: rgb(220, 220, 220);
+  }
+  
