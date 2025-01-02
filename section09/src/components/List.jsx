@@ -36,7 +36,7 @@ const List = ({ todos, onUpdate, onDelete }) => {
     };
     */
   const { totalCount, doneCount, notDoneCount } = useMemo(() => {
-    console.log("getAnalyzeData 호출");
+    //console.log("getAnalyzeData 호출");
     const totalCount = todos.length;
     //이부분이 시간을 많이 잡아먹는다.
     const todosDone = todos.filter((item) => {
