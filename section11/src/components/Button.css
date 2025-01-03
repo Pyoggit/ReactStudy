@@ -1,0 +1,22 @@
+.Button{
+    background-color: #ccc;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.Button_RED{
+    background-color: red;
+    color: black;
+}
+
+.Button_GREEN{
+    background-color: rgb(105, 207, 90);
+    color: white;
+}
+.Button :hover{
+    background-color: aqua;
+    color: white;
+}
