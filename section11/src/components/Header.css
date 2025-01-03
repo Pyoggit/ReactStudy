@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.header >.center{
+    font-size: 30px;
+    font-weight: bold;
+    color: aqua;
+}
