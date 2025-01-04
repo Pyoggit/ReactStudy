@@ -23,18 +23,21 @@ const Diary = () => {
 
   //마운트될 때 해당되는 id를 찾아서 객체가져오기
   useEffect(() => {
+    console.log("DiaryStateContext data:", data);
+    console.log("Params ID:", params.id);
+
     const currentDiaryItem = data.find(
       (item) => String(item.id) === String(params.id)
     );
+    console.log("Current Diary Item:", currentDiaryItem);
 
     if (!currentDiaryItem) {
       window.alert("존재하지 않는 일기입니다.");
       nav("/", { replace: true });
+    } else {
+      setCurDiaryItem(currentDiaryItem);
     }
-    console.log(`mount ${currentDiaryItem}`);
-    setCurDiaryItem(currentDiaryItem);
   }, [params.id, data]);
-
   if (!curDiaryItem) {
     return <div>데이터 로딩중...!</div>;
   }
