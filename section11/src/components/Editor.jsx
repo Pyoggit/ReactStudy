@@ -122,7 +122,7 @@ const Editor = ({ initData, onSubmit }) => {
         />
         <Button
           onClick={onSubmitButtonClick}
-          text={"수정하기"}
+          text={"작성완료"}
           type={"GREEN"}
         />
       </section>
