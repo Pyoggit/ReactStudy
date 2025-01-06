@@ -3,9 +3,10 @@ import Editor from "../components/Editor";
 import Button from "../components/Button";
 import { DiaryDispatchContext } from "../App";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const New = () => {
+  const [params, setParams] = useSearchParams();
   const nav = useNavigate();
   const { onCreate } = useContext(DiaryDispatchContext);
 
@@ -15,6 +16,7 @@ const New = () => {
   };
   return (
     <div>
+      <h4>쿼리스트링으로 넘어오는값{params.get("value")}</h4>
       <Header
         title={"새 일기 쓰기"}
         left={

@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Diary from "./pages/Diary";
 import New from "./pages/New";
@@ -10,19 +10,19 @@ import { useReducer, useRef, createContext } from "react";
 const mockData = [
   {
     id: 1,
-    createdDate: new Date("2024-02-19").getTime(),
+    createdDate: new Date("2025-01-19").getTime(),
     emotionId: 1,
     content: "1번 일기 내용",
   },
   {
     id: 2,
-    createdDate: new Date("2024-02-18").getTime(),
+    createdDate: new Date("2025-01-18").getTime(),
     emotionId: 2,
     content: "2번 일기 내용",
   },
   {
     id: 3,
-    createdDate: new Date("2024-01-07").getTime(),
+    createdDate: new Date("2025-02-07").getTime(),
     emotionId: 3,
     content: "3번 일기 내용",
   },
@@ -82,13 +82,21 @@ function App() {
     });
   };
 
+  const nav = useNavigate;
+  const onClickButton = () => {
+    nav("/new?value=hello2");
+  };
+
   return (
     <>
+      {/*동적라우팅(쿼리스트링) */}
+      <Link to="/new?value=hello"> New(Query)</Link>
+      <button onClick={onClickButton}>이벤트로 페이지 요청</button>
       <DiaryStateContext.Provider value={data}>
         <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/new" element={<New />} />
+            <Route path="/new/*" element={<New />} />
             <Route path="/diary/:id" element={<Diary />} />
             <Route path="/edit/:id" element={<Edit />} />
             <Route path="*" element={<NotFound />} />
